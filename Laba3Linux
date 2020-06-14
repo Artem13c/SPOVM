@@ -14,12 +14,12 @@
 
 using namespace std;
 
-union semun 
+union semun / для вызова функ semctl()
 {
-int val; 
-struct semid_ds *buf; 
-unsigned short *array; 
-struct seminfo *__buf; 
+int val;  /значения для семафора
+struct semid_ds *buf; / буфер для IPC_STAT, IPC_SET
+unsigned short *array; / массив для значений семафоров(GETALL, SETALL)
+struct seminfo *__buf; / IPC_INFO
 
 } semunion;
 
