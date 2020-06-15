@@ -17,8 +17,8 @@ using namespace std;
 union semun / для вызова функ semctl()
 {
 int val;  /значения для семафора
-struct semid_ds *buf; / буфер для IPC_STAT, IPC_SET
-unsigned short *array; / массив для значений семафоров(GETALL, SETALL)
+struct semid_ds *buf; / буфер для IPC_STAT, IPC_SET для структуры данных семафоров
+unsigned short *array; / массив для значений семафоров(GETALL, SETALL) 
 struct seminfo *__buf; / IPC_INFO
 
 } semunion;
@@ -45,7 +45,7 @@ string message;
 
 
 int sem_id = semget(IPC_PRIVATE, 4, IPC_CREAT|0666); / считывает идентификатор набора семафоров
-semctl(sem_id, 0, SETALL, 0); / управление семафором
+semctl(sem_id, 0, SETALL, 0); / управление семафорами
 if(sem_id < 0)
 {
 printf("Semaphores is not created.");
