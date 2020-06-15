@@ -29,7 +29,7 @@ void ReleaseSemaphore(int sem_id, int num);
 int main(int argc, char *argv[])
 { 
 int bufferSize = 20; 
-int shm_id = shmget(IPC_PRIVATE, bufferSize, IPC_CREAT|0666); 
+int shm_id = shmget(IPC_PRIVATE, bufferSize, IPC_CREAT|0666); /присваивает идентификатор сегменту памяти
 
 if (shm_id < 0) 
 {
@@ -44,15 +44,15 @@ system("clear");
 string message;
 
 
-int sem_id = semget(IPC_PRIVATE, 4, IPC_CREAT|0666);
-semctl(sem_id, 0, SETALL, 0);
+int sem_id = semget(IPC_PRIVATE, 4, IPC_CREAT|0666); / считывает идентификатор набора семафоров
+semctl(sem_id, 0, SETALL, 0); / управление семафором
 if(sem_id < 0)
 {
 printf("Semaphores is not created.");
 return 0;
 }
 
-int pid = fork();
+int pid = fork();/ создание процесса
 switch(pid)
 {
 case -1:
@@ -142,7 +142,7 @@ WaitSemaphore(sem_id, 3);
 
 }
 
-semctl(sem_id, 0, IPC_RMID, semunion); 
+semctl(sem_id, 0, IPC_RMID, semunion); /управление семафором
 }
 break;
 }
