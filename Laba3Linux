@@ -101,7 +101,7 @@ break;
 
 default: 
 {
-void *buffer = shmat(shm_id, NULL, 0);
+void *buffer = shmat(shm_id, NULL, 0); /подстыковывает сегмент памяти к вызывающему процессу
 while(1)
 {
 message.clear();
